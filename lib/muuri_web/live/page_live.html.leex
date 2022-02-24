@@ -2,9 +2,10 @@
   <button phx-click="add" class="px-2 transition duration-200 border rounded hover:bg-gray-300">Add card</button>
   <div id="muuri-hook" class="relative -mx-1 text-3xl" phx-hook="MuuriHook" phx-update="prepend">
     <%= for card <- @cards do %>
-      <div id="card-<%= card %>" data-id="<%= card %>" class="absolute p-1">
+      <div id="card-<%= card.id %>" data-id="<%= card.id %>" class="absolute p-1"
+        phx-click="on_card_click" phx-value-card="<%= card.id %>">
         <div class="relative flex items-center justify-center border rounded cursor-pointer w-36 h-36 before-update-copy-style">
-          <%= card %>
+          <%= card.value %>
         </div>
       </div>
     <% end %>
